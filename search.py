@@ -102,18 +102,18 @@ def generalSearch(problem,open):
             closed.append(cs)
             #agar current state ma dar closed ezafe nashawad an ra add mikonim
 
-        for successor in problem.getSuccessors(cs):
+            for successor in problem.getSuccessors(cs):
 
-            if successor[0] not in closed:
+                if successor[0] not in closed:
 
-                successorPath = path[:]
+                    successorPath = path[:]
 
-                successorPath.append(successor)
+                    successorPath.append(successor)
 
-                open.push(successorPath)
-                #farzand ra b liste open ezafe mikonim
+                    open.push(successorPath)
+                    #farzand ra b liste open ezafe mikonim
 
-        
+
 
 def depthFirstSearch(problem):
     """
@@ -141,8 +141,15 @@ def breadthFirstSearch(problem):
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+
+    cost = lambda path: problem.getCostOfActions([x[1] for x in path[1:]])
+    #moshakhas kardane hazine az ebteda ta konoun
+
+    priorityqueue =util.PriorityQueueWithFunction(cost)
+    #sakhater ucs b soorate safe olaviat ast
+
+    return generalSearch(problem,priorityqueue)
 
 def nullHeuristic(state, problem=None):
     """

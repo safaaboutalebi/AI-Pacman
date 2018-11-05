@@ -72,7 +72,7 @@ def tinyMazeSearch(problem):
     w = Directions.WEST
     return  [s, s, w, s, w, w, s, w]
 
-
+"""slm mn amira"""
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.

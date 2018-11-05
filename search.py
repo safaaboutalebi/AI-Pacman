@@ -105,6 +105,7 @@ def generalSearch(problem,open):
         for successor in problem.getSuccessors(cs):
 
             if successor[0] not in closed:
+
                 successorPath = path[:]
 
                 successorPath.append(successor)
@@ -112,7 +113,7 @@ def generalSearch(problem,open):
                 open.push(successorPath)
                 #farzand ra b liste open ezafe mikonim
 
-        return false
+        
 
 def depthFirstSearch(problem):
     """

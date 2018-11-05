@@ -72,7 +72,48 @@ def tinyMazeSearch(problem):
     w = Directions.WEST
     return  [s, s, w, s, w, w, s, w]
 
-"""slm mn amira"""
+
+def generalSearch(problem,open):
+
+    open.push([(problem.getStartState(),"stop",0)])
+    # open[] <--[halate aqazin]
+
+    closed = []
+
+    if open.isEmpty():
+        return false
+    #agar in list khali bashad javab nadarim
+
+    while not open.isEmpty():
+
+        path =open.pop()
+        #masir ra moshakhas mikonad
+
+        cs = path[-1][0]
+        #ba tawajoh b sakhare path current state ma barabar ast ba cs
+
+        if problem.isGoalState(cs):
+
+            li = [x[1] for x in path[1:]]
+            return li
+
+        if cs not in closed:
+
+            closed.append(cs)
+            #agar current state ma dar closed ezafe nashawad an ra add mikonim
+
+        for successor in problem.getSuccessors(cs):
+
+            if successor[0] not in closed:
+                successorPath = path[:]
+
+                successorPath.append(successor)
+
+                open.push(successorPath)
+                #farzand ra b liste open ezafe mikonim
+
+        return false
+
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.
@@ -87,8 +128,10 @@ def depthFirstSearch(problem):
     print "Is the start a goal?", problem.isGoalState(problem.getStartState())
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    stack = util.Stack()
+    #sakhtar dfs b sourate poshte ast
+
+    return generalSearch(problem, stack)
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""

@@ -485,12 +485,12 @@ class ClosestDotSearchAgent(SearchAgent):
         walls = gameState.getWalls()
         problem = AnyFoodSearchProblem(gameState)
 
-        
+
         from search import breadthFirstSearch
         return  breadthFirstSearch(problem)
 
 
-        util.raiseNotDefined()
+        
 
 class AnyFoodSearchProblem(PositionSearchProblem):
     """
